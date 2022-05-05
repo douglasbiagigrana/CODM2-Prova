@@ -4,12 +4,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  Modal
 } from 'react-native';
 import styles from "./style"
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Book = ({ navigation }) => {
   const book = navigation.getParam("book", {
@@ -26,7 +24,6 @@ const Book = ({ navigation }) => {
   const [description, setDescription] = useState(book.description);
   const [read, setRead] = useState(book.read);
   const [photo, setPhoto] = useState(book.photo);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem("books").then(data => {
@@ -62,9 +59,6 @@ const Book = ({ navigation }) => {
           return item;
         });
 
-        console.log("books", books);
-        console.log("newBooks", newBooks);
-
         await AsyncStorage.setItem('books', JSON.stringify(newBooks));
       } else {
         // adiciona um novo livro
@@ -86,13 +80,9 @@ const Book = ({ navigation }) => {
     }
   };
 
-  const onCloseModal = () => setIsModalVisible(false);
-
-  const onChangePhoto = (newPhoto) => setPhoto(newPhoto);
-
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Inclua seu novo livro...</Text>
+      <Text style={styles.pageTitle}>Inclua seu novo livro</Text>
       <TextInput
         style={styles.input}
         placeholder="Título"
@@ -112,17 +102,8 @@ const Book = ({ navigation }) => {
         }}
       />
 
-      <TouchableOpacity 
-        style={styles.cameraButton}
-        onPress={() => {
-          setIsModalVisible(true)
-        }}
-      >
-        <Icon name="photo-camera" size={18} color="#fff" />
-      </TouchableOpacity>
-
       <TouchableOpacity
-        style={[styles.saveButton, !isValid() ? styles.saveButtonInvalid : '']}
+        style={styles.saveButton}
         onPress={onSave}>
         <Text style={styles.saveButtonText}>{isEdit ? "Atualizar" : "Cadastrar"}</Text>
       </TouchableOpacity>
@@ -134,8 +115,6 @@ const Book = ({ navigation }) => {
         }}>
         <Text style={styles.cancelButtonText}>Cancelar</Text>
       </TouchableOpacity>
-
-
     </View>
   );
 };

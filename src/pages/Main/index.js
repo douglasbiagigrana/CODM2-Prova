@@ -50,7 +50,7 @@ const Main = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.toolbox}>
-        <Text style={styles.title}>Lista de Leitura...</Text>
+        <Text style={styles.title}>Minha Lista de Leitura</Text>
         <TouchableOpacity
           style={styles.toolboxButton}
           onPress={onNewBook}>

@@ -4,17 +4,20 @@ import Constants from "expo-constants";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 5,
+    paddingHorizontal: 20,
     paddingTop: Constants.statusBarHeight + 2,
-    backgroundColor: "#f0ee87",
+    backgroundColor: "#F0F8FF",
   },
   toolbox: {
     flexDirection: "row",
+    alignItems: "center",
+    marginTop: 20,
     marginBottom: 5,
   },
   title: {
     flex: 1,
-    fontSize: 30,
+    fontSize: 25,
+    fontWeight: "bold",
     color: "#3498db",
   },
   toolboxButton: {
@@ -27,21 +30,27 @@ const styles = StyleSheet.create({
   },
   itemsContainer: {
     flexDirection: "row",
+    marginTop: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#d7dd75",
+    borderBottomColor: "#3498db",
+    paddingVertical: 10,
   },
   itemButton: {
     flex: 1,
   },
   itemText: {
-    fontSize: 26,
+    fontSize: 20,
   },
   itemRead: {
     textDecorationLine: "line-through",
     color: "#95a5a6",
   },
-  editButton: {},
-  deleteButton: {},
+  editButton: {
+    marginRight: 10,
+  },
+  deleteButton: {
+    
+  },
 });
 
 export default styles;
